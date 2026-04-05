@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///C:/Users/ad/Desktop/dahaejum/index.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다해줌 최저가 케이스 비교</title>
+  <style>
+    :root {
+      --bg: #f4f7fc;
+      --card: #ffffff;
+      --line: #dbe4f2;
+      --text: #162033;
+      --sub: #5c6b80;
+      --brand: #2f63f6;
+      --brand-soft: #ecf2ff;
+      --navy: #122043;
+      --ok: #13683a;
+      --okbg: #e7f7ed;
+      --no: #8c1f35;
+      --nobg: #fdecef;
+      --shadow: 0 16px 42px rgba(23, 40, 79, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: linear-gradient(180deg, #f6f8fd 0%, #eef3fb 100%); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1660px; margin: 0 auto; padding: 28px 24px 84px; }
+    .hero { background: linear-gradient(135deg, #ffffff 0%, #edf4ff 55%, #e9f0ff 100%); border: 1px solid var(--line); border-radius: 30px; padding: 36px; box-shadow: var(--shadow); }
+    .eyebrow { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-weight: 800; font-size: 13px; }
+    h1 { margin: 14px 0 12px; font-size: 42px; line-height: 1.18; }
+    .hero p { margin: 0; font-size: 17px; line-height: 1.8; color: var(--sub); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; margin-top: 22px; }
+    .hero-box { background: rgba(255,255,255,.88); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
+    .hero-box h3 { margin: 0 0 12px; font-size: 18px; }
+    .hero-box ul { margin: 0; padding-left: 18px; color: var(--sub); line-height: 1.8; }
+    .nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; margin: 22px 0; }
+    .nav-grid a { background: rgba(255,255,255,.95); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; box-shadow: 0 8px 24px rgba(25, 42, 77, .06); }
+    .nav-grid strong { display: block; color: var(--brand); font-size: 13px; margin-bottom: 6px; }
+    .nav-grid span { font-size: 15px; line-height: 1.45; font-weight: 700; }
+    .compare-card, .case-card, .common-visual-card { background: rgba(255,255,255,.96); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .common-pill { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: #eef5ff; color: #1d4ed8; font-size: 12px; font-weight: 800; margin-bottom: 10px; }
+    .common-visual-card { padding: 30px; margin-bottom: 22px; }
+    .common-visual-card h2 { margin: 0 0 8px; font-size: 30px; }
+    .common-visual-card p { margin: 0; color: var(--sub); line-height: 1.8; }
+    .common-visual-body { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(320px, .75fr); gap: 18px; align-items: start; margin-top: 18px; }
+    .compare-card { padding: 28px; margin-bottom: 22px; }
+    .section-head h2 { margin: 0 0 6px; font-size: 28px; }
+    .section-head p { margin: 0 0 18px; color: var(--sub); }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 18px; }
+    th, td { padding: 16px 14px; border-bottom: 1px solid #e8edf6; text-align: center; font-size: 15px; }
+    thead th { background: #f4f7fe; font-size: 14px; color: #2a3a50; }
+    th:first-child, td:first-child { text-align: left; width: 30%; font-weight: 700; }
+    tr:last-child th, tr:last-child td { border-bottom: 0; }
+    .pill { display: inline-flex; align-items: center; justify-content: center; min-width: 68px; padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; }
+    .pill.on { background: var(--okbg); color: var(--ok); }
+    .pill.off { background: var(--nobg); color: var(--no); }
+    .case-card { padding: 30px; margin-bottom: 22px; }
+    .case-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+    .badge { display: inline-flex; padding: 7px 12px; border-radius: 999px; background: var(--navy); color: white; font-size: 13px; font-weight: 800; margin-bottom: 10px; }
+    .case-header h2 { margin: 0 0 8px; font-size: 31px; }
+    .summary { margin: 0; color: var(--sub); line-height: 1.8; font-size: 16px; }
+    .top-link { color: var(--brand); font-weight: 700; white-space: nowrap; font-size: 14px; }
+    .case-body { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(320px, .7fr); gap: 18px; align-items: start; }
+    .visual-box, .note-box { background: #fbfcff; border: 1px solid #e1e8f5; border-radius: 22px; padding: 18px; }
+    .box-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .box-head strong { font-size: 18px; }
+    .box-head span { font-size: 13px; color: var(--brand); font-weight: 700; }
+    .visual-box img { width: 100%; display: block; border-radius: 16px; border: 1px solid #dbe4f2; background: white; box-shadow: 0 16px 34px rgba(25, 44, 78, .08); }
+    .notes-col { display: grid; gap: 14px; position: sticky; top: 18px; }
+    .note-box h3 { margin: 0 0 12px; font-size: 18px; }
+    .note-box ul { margin: 0; padding-left: 18px; color: #334155; line-height: 1.85; }
+    .note-box.caution { background: #fffaf7; border-color: #f4ddc7; }
+    .footer { margin-top: 28px; padding: 20px 24px; border-radius: 18px; background: #111827; color: #dce5f7; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .footer a { color: #9ec2ff; font-weight: 700; }
+    @media (max-width: 1280px) {
+      .hero-grid, .case-body, .common-visual-body { grid-template-columns: 1fr; }
+      .notes-col { position: static; }
+    }
+    @media (max-width: 860px) {
+      .wrap { padding: 18px 14px 64px; }
+      .hero, .compare-card, .case-card, .common-visual-card { padding: 20px; border-radius: 20px; }
+      h1 { font-size: 33px; }
+      .nav-grid { grid-template-columns: 1fr 1fr; }
+      table, thead, tbody, tr, th, td { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 12px; border: 1px solid #e8edf6; border-radius: 16px; overflow: hidden; }
+      th:first-child, td:first-child { width: auto; }
+      tbody th { background: #f6f9ff; }
+      td { text-align: left; padding-top: 10px; padding-bottom: 10px; }
+      td::before { display: inline-block; min-width: 88px; font-weight: 800; color: #475569; }
+      tbody tr td:nth-child(2)::before { content: 'Case 1'; }
+      tbody tr td:nth-child(3)::before { content: 'Case 2'; }
+      tbody tr td:nth-child(4)::before { content: 'Case 3'; }
+      tbody tr td:nth-child(5)::before { content: 'Case 4'; }
+    }
+    @media (max-width: 620px) {
+      .nav-grid { grid-template-columns: 1fr; }
+      .box-head { flex-direction: column; align-items: flex-start; }
+      .case-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <section class="hero">
+      <span class="eyebrow">최신 이미지 반영본</span>
+      <h1>다해줌 최저가 노출 케이스 비교 가이드</h1>
+      
+      <div class="hero-grid">
+        
+        
+      </div>
+    </section>
+
+    <nav class="nav-grid">
+      <a href="#case1"><strong>Case 1</strong><span>전체 최저가일 때</span></a>
+      <a href="#case2"><strong>Case 2</strong><span>혜택가가 최저가일 때</span></a>
+      <a href="#case3"><strong>Case 3</strong><span>전체 최저가가 아닐 때</span></a>
+      <a href="#case4"><strong>Case 4</strong><span>다해줌 기준 최저가 별도 노출</span></a>
+    </nav>
+
+    
+
+    
+    <section class="case-card" id="case1">
+      <div class="case-header">
+        <div>
+          <div class="badge">Case 1</div>
+          <h2>다해줌 대상 쇼핑몰이 전체 최저가</h2>
+          <p class="summary">가장 기본적인 노출 방식입니다. 최저가 영역과 몰별최저가 영역 모두에서 다해줌을 바로 인지할 수 있어 사용자의 선택 유도가 가장 직관적입니다.</p>
+        </div>
+        <a class="top-link" href="#top">맨 위로</a>
+      </div>
+      <div class="case-body">
+        <div class="visual-box">
+          <div class="box-head">
+            <strong>예시 화면</strong>
+            
+          </div>
+          <a target="_blank" rel="noopener noreferrer">
+            <img src="./index_files/case01.jpg" alt="다해줌 대상 쇼핑몰이 전체 최저가 예시 화면">
+          </a>
+        </div>
+        <div class="notes-col">
+          <div class="note-box">
+            <h3>특징</h3>
+            <ul><li>최저가 영역 우측에 다해줌 버튼 노출</li><li>몰별최저가 영역에서도 다해줌 업체 버튼 노출</li><li>가격 경쟁력과 다해줌 진입 경로가 동시에 명확하게 보임</li></ul>
+          </div>
+          <div class="note-box caution">
+            <h3>유의사항</h3>
+            <ul><li>최저가 강조와 다해줌 CTA가 동시에 보이므로 시각적 우선순위 충돌이 없도록 정리해야 함</li><li>다른 배지·할인 문구가 있는 경우 버튼 인지가 약해지지 않도록 여백과 색 대비를 확보해야 함</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="case-card" id="case2">
+      <div class="case-header">
+        <div>
+          <div class="badge">Case 2</div>
+          <h2>멤버십/카드 혜택가가 최저가이면서 다해줌 업체</h2>
+          <p class="summary">일반 판매가가 아니라 혜택가 맥락에서 다해줌이 우위인 케이스입니다. 가격 오인을 피하려면 혜택 적용 조건과 노출 위치가 함께 설계되어야 합니다.</p>
+        </div>
+        <a class="top-link" href="#top">맨 위로</a>
+      </div>
+      <div class="case-body">
+        <div class="visual-box">
+          <div class="box-head">
+            <strong>예시 화면</strong>
+            
+          </div>
+          <a target="_blank" rel="noopener noreferrer">
+            <img src="./index_files/case02.jpg" alt="멤버십/카드 혜택가가 최저가이면서 다해줌 업체 예시 화면">
+          </a>
+        </div>
+        <div class="notes-col">
+          <div class="note-box">
+            <h3>특징</h3>
+            <ul><li>최저가 영역 우측에는 다해줌 버튼 비노출</li><li>멤버십/카드 혜택가 영역에 다해줌 버튼 노출</li><li>몰별최저가 영역에는 다해줌 업체 버튼 노출</li></ul>
+          </div>
+          <div class="note-box caution">
+            <h3>유의사항</h3>
+            <ul><li>멤버십 포인트는 실제 결제자인 다해줌이 취득하므로 향후 다른 구매대행에 활용 가능</li><li>카드 할인은 횟수 제한 또는 최대 할인 금액 제한이 있어, 실제 할인 금액에 살 수 없을 수 있음</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="case-card" id="case3">
+      <div class="case-header">
+        <div>
+          <div class="badge">Case 3</div>
+          <h2>다해줌 대상 쇼핑몰이 전체 최저가가 아닌 경우</h2>
+          <p class="summary">전체 최저가가 아닌 상황에서 다해줌을 보조 동선으로만 노출하는 방식입니다. 가격 신뢰성을 해치지 않으면서도 다해줌 유입 경로를 유지할 수 있습니다.</p>
+        </div>
+        <a class="top-link" href="#top">맨 위로</a>
+      </div>
+      <div class="case-body">
+        <div class="visual-box">
+          <div class="box-head">
+            <strong>예시 화면</strong>
+            
+          </div>
+          <a target="_blank" rel="noopener noreferrer">
+            <img src="./index_files/case03.jpg" alt="다해줌 대상 쇼핑몰이 전체 최저가가 아닌 경우 예시 화면">
+          </a>
+        </div>
+        <div class="notes-col">
+          <div class="note-box">
+            <h3>특징</h3>
+            <ul><li>최저가 우측 영역에는 다해줌 버튼 비노출</li><li>몰별최저가 영역에서만 다해줌 업체 버튼 노출</li><li>전체 최저가 정보와 다해줌 선택 유도를 분리해 오인을 줄일 수 있음</li></ul>
+          </div>
+          <div class="note-box caution">
+            <h3>유의사항</h3>
+            <ul><li>전체 최저가가 아님에도 과도한 강조를 하면 사용자가 추천 이유를 혼동할 수 있음</li><li>목록 내 버튼만 보이므로 식별성과 클릭 유도성이 지나치게 약해지지 않도록 대비를 확보해야 함</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="case-card" id="case4">
+      <div class="case-header">
+        <div>
+          <div class="badge">Case 4</div>
+          <h2>최저가가 아닌경우 다해줌 기준 최저가를 별도 영역으로 보여주는 확장안</h2>
+          <p class="summary">전체 최저가는 아니지만 다해줌 기준의 최저가를 별도 영역으로 제시하는 확장형 패턴입니다. 설명력은 높아지지만 정보 구조를 더 정교하게 다뤄야 합니다.</p>
+        </div>
+        <a class="top-link" href="#top">맨 위로</a>
+      </div>
+      <div class="case-body">
+        <div class="visual-box">
+          <div class="box-head">
+            <strong>예시 화면</strong>
+            
+          </div>
+          <a target="_blank" rel="noopener noreferrer">
+            <img src="./index_files/case04.jpg" alt="다해줌 기준 최저가를 별도 영역으로 보여주는 확장안 예시 화면">
+          </a>
+        </div>
+        <div class="notes-col">
+          <div class="note-box">
+            <h3>특징</h3>
+            <ul><li>신규 영역을 추가하여 다해줌 기준 최저가 및 다해줌 버튼 표시</li><li>몰별최저가 영역에서도 다해줌 업체 버튼 노출</li><li>전체 최저가와 다해줌 추천가를 병렬로 비교할 수 있음</li></ul>
+          </div>
+          <div class="note-box caution">
+            <h3>유의사항</h3>
+            <ul><li>전체 최저가와 다해줌 기준 최저가를 시각적으로 명확히 구분하지 않으면 혼동이 발생할 수 있음</li><li>추가 영역이 생기므로 모바일에서는 정보량이 과해지지 않도록 접힘 구조나 요약 문구 설계가 중요함</li><li>왜 다해줌 가격을 별도로 제안하는지 설명하는 보조 문구가 함께 있어야 설득력이 높아짐</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="common-visual-card">
+      <div class="case-header">
+        <div>
+          <div class="common-pill">공통 정책</div>
+          <h2>가격비교 탭 공통 노출</h2>
+          <p>5페이지 기준으로 가격비교 탭에서는 다해줌 상품에 대해 다해줌 버튼이 공통적으로 노출됩니다. 즉, 1~4번 케이스는 메인 가격 영역의 노출 방식 차이를 설명하는 것이고, 가격비교 탭의 다해줌 버튼 노출은 모든 케이스에 동일하게 적용되는 공통 기준입니다.</p>
+        </div>
+        <a class="top-link" href="#top">맨 위로</a>
+      </div>
+      <div class="common-visual-body">
+        <div class="visual-box">
+          <div class="box-head">
+            <strong>공통 정책 예시 화면</strong>
+            <span>5페이지 기준 이미지</span>
+          </div>
+          <a target="_blank" rel="noopener noreferrer">
+            <img src="./index_files/com.jpg" alt="가격비교 탭 공통 노출 예시 화면">
+          </a>
+        </div>
+        <div class="notes-col">
+          <div class="note-box">
+            <h3>핵심 포인트</h3>
+            <ul>
+              <li>가격비교 탭에서는 다해줌 상품에 대해 다해줌 버튼이 공통 노출됩니다.</li>
+              <li>이 정책은 1~4번 케이스와 별개로 동일하게 적용되는 공통 규칙입니다.</li>
+              <li>사용자는 가격 영역 케이스가 달라도 가격비교 탭에서는 일관된 진입 경험을 얻게 됩니다.</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    
+  </div>
+
+
+</body></html>
